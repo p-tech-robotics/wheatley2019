@@ -34,7 +34,10 @@ class MyRobot(wpilib.TimedRobot):
 
     def teleopPeriodic(self):
         """Runs the motors with tank steering"""
-        self.myRobot.arcadeDrive(self.stick.getRawAxis(1)**3, self.stick.getRawAxis(4)**3)
+        # exponential response
+        # self.myRobot.arcadeDrive(self.stick.getRawAxis(1)**3, self.stick.getRawAxis(4)**3)
+        # Linear Response
+        self.myRobot.arcadeDrive(self.stick.getRawAxis(1), self.stick.getRawAxis(4))
 
 
 if __name__ == "__main__":
