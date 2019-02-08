@@ -1,6 +1,6 @@
 # wheatley2019
 2019 FRC robot code for Wheatley
-![pipeline](pipeline.jpeg)
+![pipeline](resources/pipeline.jpeg)
 TODO
 ---
  - complete vision tracking
