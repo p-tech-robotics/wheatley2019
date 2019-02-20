@@ -1,7 +1,7 @@
 import wpilib
 from wpilib import Spark
 
-class Wrist:
+class Intake:
   """
   Backup mech for hatch panels
   """
