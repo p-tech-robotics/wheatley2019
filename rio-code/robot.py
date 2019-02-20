@@ -19,11 +19,25 @@ class Wheatley(TimedRobot):
     self.xbox = Joystick(0)
     self.joystick = Joystick(1)
 
-  def teleopInit(self):
-    return NotImplemented
 
   def teleopPeriodic(self):
-    return NotImplemented
+    self.drive.drive.ArcadeDrive(self.xbox.getRawAxis(1),
+                                self.xbox.getRawAxis(4))
+
+
+    # bumpers control wrist/popper
+    if self.xbox.getRawButton(5):
+      self.wrist.up()
+    elif self.xbox.getRawButton(6):
+      self.wrist.down()
+    else:
+      self.wrist.stop()
+
+    # Popper (
+    self.popper.set(self.xbox.getRawButton(5))
+
+    # Intake Code (Triggers)
+    self.intake.set(self.xbox.getRawAxis(2) + (-1.0 * self.xbox.getRawAxis(3)))
 
 
 if __name__ == '__main__':
