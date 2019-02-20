@@ -1,5 +1,5 @@
 import wpilib
-from wpilib import TimedRobot, ArcadeDrive, DifferentialDrive, Spark, Joystick
+from wpilib import TimedRobot, Timer, ArcadeDrive, DifferentialDrive, Spark, Joystick
 
 from components import drive, wrist, intake#, popper, camera
 
@@ -18,6 +18,23 @@ class Wheatley(TimedRobot):
 
     self.xbox = Joystick(0)
     self.joystick = Joystick(1)
+
+    self.timer = Timer()
+
+  def autonomousInit(self):
+    """
+    Runs one time whenever the bot enters auto mode
+    """
+    self.timer.reset()
+    self.timer.start()
+
+
+
+  def autonomousPeriodic(self):
+    """
+    loops during auto period
+    """
+    teleopPeriodic() # TODO: remove soon once auto code works
 
 
   def teleopPeriodic(self):
