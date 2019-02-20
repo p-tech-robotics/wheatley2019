@@ -1,29 +1,21 @@
 import wpilib
-from magicbot import MagicRobot
+from wpilib import TimedRobot, ArcadeDrive, DifferentialDrive, Spark
 
-#from components.component1 import Component1
+from components import drive, wrist, intake, popper
 
-from components import Wrist, Intake, Popper
+class Wheatley(TimedRobot):
+  def robotInit(self):
+    # Initialize components
+    # Constructor params are PWM Ports on the RIO
+    self.drive = drive.Drivetrain(0,1,2,3)
+    self.wrist = wrist.Wrist(4)
+    self.intake = intake.Intake(5)
+    self.popper = popper.Popper(1,2)
 
-clas MyRobot(MagicRobot):
-  #component1 = Component1
+  def
 
-  k_constant = 1
-
-  def createObjects(self):
-    """Initialize all motors and sensors"""
-
-    self.component1_motor = wpilib.Spark(1)
-    self.component2
-
-
-  def teleopInit(self):
-    """called when teleop starts"""
-
-  def teleopPeriodic(self):
-    """called on each iteration of teleop loop"""
 
 
 if __name__ == '__main__':
-  wpilib.run(MyRobot)
+  wpilib.run(Wheatley)
 
