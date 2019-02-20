@@ -1,7 +1,7 @@
 import wpilib
 from wpilib import TimedRobot, ArcadeDrive, DifferentialDrive, Spark, Joystick
 
-from components import drive, wrist#, intake, popper, camera
+from components import drive, wrist, intake#, popper, camera
 
 class Wheatley(TimedRobot):
   def robotInit(self):
@@ -13,7 +13,7 @@ class Wheatley(TimedRobot):
     # Constructor params are PWM Ports on the RIO
     self.drive = drive.Drivetrain(0,1,2,3)
     self.wrist = wrist.Wrist(4)
-    #self.intake = intake.Intake(5)
+    self.intake = intake.Intake(5)
     #self.popper = popper.Popper(1,2)
 
     self.xbox = Joystick(0)
