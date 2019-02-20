@@ -1,5 +1,6 @@
 import wpilib
-from wpilib import Spark
+from wpilib import Spark, SpeedControllerGroup
+from wpilib.drive import DifferentialDrive
 
 class Drivetrain:
   """
@@ -17,15 +18,21 @@ class Drivetrain:
     """
 
     # Motors on Left Side
-    l_f_motor = Spark(l_f_port)
-    f_r_motor = Spark(l_r_port)
+    self.l_f_motor = Spark(l_f_port)
+    self.f_r_motor = Spark(l_r_port)
 
     # Motors on Right Side
-    r_f_motor = Spark(r_f_port)
-    r_r_motor = Spark(r_r_port)
+    self.r_f_motor = Spark(r_f_port)
+    self.r_r_motor = Spark(r_r_port)
 
     # Motor groups
+    self.l_group = SpeedControllerGroup(self.l_f_motor, self.l_r_motor)
+    self.r_group = SpeedControllerGroup(self.r_f_motor, self.r_r_motor)
 
+    self.drive = DifferentialDrive(self.l_group, self.r_group)
+
+  def drive_to_angle(self):
+    return NotImplemented
 
 
 
