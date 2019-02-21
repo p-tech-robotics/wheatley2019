@@ -59,6 +59,7 @@ class Wheatley(TimedRobot):
     """
     loops during auto period
     """
+
     self.teleopPeriodic() # TODO: remove soon once auto code works
 
 if __name__ == '__main__':
