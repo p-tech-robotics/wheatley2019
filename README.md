@@ -7,6 +7,7 @@ TODO
  - add encoders
  - add autonomous(encoders)
  - add IMU + Encoder fusion algorithm
+ - robotpy simulator
  - add camera tracker
  - interface cameratracker to jetson, communicate with roboRIO over NetworkTables
  - stream iris cam
