@@ -19,7 +19,7 @@ class Drivetrain:
 
     # Motors on Left Side
     self.l_f_motor = Spark(l_f_port)
-    self.f_r_motor = Spark(l_r_port)
+    self.l_r_motor = Spark(l_r_port)
 
     # Motors on Right Side
     self.r_f_motor = Spark(r_f_port)
