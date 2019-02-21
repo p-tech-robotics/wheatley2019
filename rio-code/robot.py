@@ -1,5 +1,5 @@
 import wpilib
-from wpilib import TimedRobot, Timer, Joystick, CameraServer, PowerDistributionPanel
+from wpilib import TimedRobot, Timer, Joystick, CameraServer, PowerDistributionPanel, DriverStation
 
 from components import drive, wrist, intake, popper#, camera
 
@@ -25,23 +25,8 @@ class Wheatley(TimedRobot):
     self.pdp = PowerDistributionPanel(1)
 
     self.timer = Timer()
-
-  def autonomousInit(self):
-    """
-    Runs one time whenever the bot enters auto mode
-    """
-    self.timer.reset()
-    self.timer.start()
-
-
-
-  def autonomousPeriodic(self):
-    """
-    loops during auto period
-    """
-    teleopPeriodic() # TODO: remove soon once auto code works
-
-
+  def teleopInit(self):
+    pass
   def teleopPeriodic(self):
     self.drive.drive.ArcadeDrive(self.xbox.getRawAxis(1),
                                 self.xbox.getRawAxis(4))
@@ -60,6 +45,23 @@ class Wheatley(TimedRobot):
 
     # Intake Code (Triggers)
     self.intake.set(self.xbox.getRawAxis(2) + (-1.0 * self.xbox.getRawAxis(3)))
+
+
+  def autonomousInit(self):
+    """
+    Runs one time whenever the bot enters auto mode
+    """
+    self.timer.reset()
+    self.timer.start()
+
+
+
+  def autonomousPeriodic(self):
+    """
+    loops during auto period
+    """
+    teleopInit()
+    teleopPeriodic() # TODO: remove soon once auto code works
 
 
 if __name__ == '__main__':
