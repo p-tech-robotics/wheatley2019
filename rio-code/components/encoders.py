@@ -16,7 +16,7 @@ class Encoders:
               r_a = 2,
               r_b = 3):
 
-    self.left = Encoder(l_a,l_b)
+    self.left = Encoder(l_a,l_b, reverseDirection=True)
     self.right = Encoder(r_a,r_b)
 
     self.left.setDistancePerPulse(self.dpp)
