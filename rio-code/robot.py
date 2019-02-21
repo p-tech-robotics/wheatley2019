@@ -1,5 +1,5 @@
 import wpilib
-from wpilib import TimedRobot, Timer, ArcadeDrive, DifferentialDrive, Spark, Joystick
+from wpilib import TimedRobot, Timer, ArcadeDrive, DifferentialDrive, Joystick, CameraServer
 
 from components import drive, wrist, intake, popper#, camera
 
@@ -18,6 +18,11 @@ class Wheatley(TimedRobot):
 
     self.xbox = Joystick(0)
     self.joystick = Joystick(1)
+
+    CameraServer.launch("components/camera.py:main")
+
+    self.ds = DriverStation.getInstance()
+    self.pdp = PowerDistributionPanel(0)
 
     self.timer = Timer()
 
