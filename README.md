@@ -15,6 +15,7 @@ TODO
 
  - **Robot Build**
    - add pneumatic panel
+   - mount air tanks to drivetrain
    - front panel for cylinders
    - cable mgmt
    - mount side panels
