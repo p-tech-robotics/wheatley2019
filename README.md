@@ -13,6 +13,13 @@ TODO
  - stream iris cam
  - update, configure CAN ids on PDP and PCM
 
+ - **Robot Build**
+   - add pneumatic panel
+   - front panel for cylinders
+   - cable mgmt
+   - mount side panels
+   - drive practice!
+
 Notes
 ---
   - i2c stuff: https://robotpy.readthedocs.io/projects/wpilib/en/stable/hal.html#i2c-spi-simulation-helpers
@@ -33,5 +40,4 @@ DONE
    - frame
    - wrist
    - intake
-   - side panels
    - electrical panel
