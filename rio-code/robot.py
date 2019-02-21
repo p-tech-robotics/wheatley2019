@@ -25,6 +25,8 @@ class Wheatley(TimedRobot):
     self.pdp = PowerDistributionPanel(1)
 
     self.timer = Timer()
+
+  @Override
   def teleopPeriodic(self):
     self.drive.drive.ArcadeDrive(self.xbox.getRawAxis(1),
                                 self.xbox.getRawAxis(4))
@@ -53,14 +55,12 @@ class Wheatley(TimedRobot):
     self.timer.start()
 
 
-  '''
   def autonomousPeriodic(self):
     """
     loops during auto period
     """
     teleopInit()
     teleopPeriodic() # TODO: remove soon once auto code works
-  '''
 
 if __name__ == '__main__':
   wpilib.run(Wheatley)
