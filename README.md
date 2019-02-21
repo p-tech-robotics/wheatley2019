@@ -4,7 +4,6 @@
 
 TODO
 ---
- - **DONE **Rewrite subsystem based bot
  - add cameras
  - add encoders
  - add autonomous(encoders)
@@ -20,3 +19,19 @@ Notes
   - robot simulator: https://robotpy.readthedocs.io/projects/pyfrc/en/stable/api.html
   - networktables: https://robotpy.readthedocs.io/projects/pynetworktables/en/stable/api.html
   - pathfinder: https://github.com/robotpy/robotpy-pathfinder
+
+
+DONE
+---
+ - install robotpy
+ - add drive base class
+ - add subsystem components
+ - write LED code
+ - set up electronics
+ - finish building robot
+   - drivetrain
+   - frame
+   - wrist
+   - intake
+   - side panels
+   - electrical panel
