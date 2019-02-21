@@ -41,4 +41,5 @@ DONE
    - frame
    - wrist
    - intake
+   - bumpers
    - electrical panel
