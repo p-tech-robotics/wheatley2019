@@ -1,5 +1,5 @@
 import wpilib
-from wpilib import TimedRobot, Timer, ArcadeDrive, DifferentialDrive, Joystick, CameraServer
+from wpilib import TimedRobot, Timer, ArcadeDrive, DifferentialDrive, Joystick, CameraServer, PowerDistributionPanel
 
 from components import drive, wrist, intake, popper#, camera
 
