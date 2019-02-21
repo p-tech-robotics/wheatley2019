@@ -23,13 +23,13 @@ class Encoders:
     self.right.setDistancePerPulse(self.dpp)
 
   def getDist(self):
-    return ((-1*self.left.GetDistance) + self.right.getDistance) /2
+    return (self.left.GetDistance + self.right.getDistance) /2
 
   def get_R_Dist(self):
     return self.right.GetDistance
 
   def get_L_Dist(self):
-    return - self.left.gGetDistance()
+    return self.left.gGetDistance()
 
   def reset(self):
     self.right.reset()
