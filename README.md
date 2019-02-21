@@ -4,14 +4,15 @@
 
 TODO
 ---
- - Rewrite subsystem based bot
+ - **DONE **Rewrite subsystem based bot
  - add cameras
  - add encoders
  - add autonomous(encoders)
  - add IMU + Encoder fusion algorithm
  - add camera tracker
- - interface cameratracker to jetson, communicate with roboRIO
-
+ - interface cameratracker to jetson, communicate with roboRIO over NetworkTables
+ - stream iris cam
+ - update, configure CAN ids on PDP and PCM
 
 Notes
 ---
