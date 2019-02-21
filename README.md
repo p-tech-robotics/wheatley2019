@@ -4,7 +4,6 @@
 
 TODO
 ---
- - add encoders
  - add autonomous(encoders)
  - add IMU + Encoder fusion algorithm
  - robotpy simulator
@@ -31,6 +30,7 @@ Notes
 
 DONE
 ---
+ - add encoders
  - add cameras
  - install robotpy
  - add drive base class
