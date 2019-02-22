@@ -1,7 +1,7 @@
 import wpilib
 from wpilib import TimedRobot, Timer, Joystick, CameraServer, PowerDistributionPanel, DriverStation
 
-from components import drive, wrist, intake, popper, encoders
+from components import drive, wrist, intake, popper, encoders, imu
 
 class Wheatley(TimedRobot):
   def robotInit(self):
