@@ -16,6 +16,7 @@ class Wheatley(TimedRobot):
     self.intake = intake.Intake(5)
     self.popper = popper.Popper(0,0)
 
+    self.imu = imu.IMU(0)
     self.encoders = encoders.Encoders()
 
     self.xbox = Joystick(0)
