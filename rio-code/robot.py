@@ -1,9 +1,11 @@
 import wpilib
 from wpilib import TimedRobot, Timer, Joystick, CameraServer, PowerDistributionPanel, DriverStation
 
-from components import drive, wrist, intake, popper, encoders, imu#, statemachine
+from components import drive, wrist, popper, encoders, imu#, statemachine
 
 class Wheatley(TimedRobot):
+  kSpeedLimit = 0.8 # to prevent driver from tipping robot
+
   def robotInit(self):
     """
     Init Robot
@@ -11,16 +13,14 @@ class Wheatley(TimedRobot):
 
     # Robot Components
     # Constructor params are PWM Ports on the RIO
-    self.drive = drive.Drivetrain(0,1,2,3)
-    self.wrist = wrist.Wrist(4)
+    self.drive = drive.Drivetrain(1,2,3,4)
     self.intake = intake.Intake(5)
-    self.popper = popper.Popper(0,0)
+    self.popper = popper.Popper(1,0)
 
-    self.imu = imu.IMU(0)
+    self.imu = imu.IMU(2)
     self.encoders = encoders.Encoders()
 
     self.xbox = Joystick(0)
-    self.joystick = Joystick(1)
 
     CameraServer.launch("components/camera.py:main")
 
@@ -28,28 +28,7 @@ class Wheatley(TimedRobot):
     self.pdp = PowerDistributionPanel(1)
 
     self.timer = Timer()
-  def teleopInit(self):
-    pass
-  def teleopPeriodic(self):
-    self.drive.drive.arcadeDrive(self.xbox.getRawAxis(1),
-                                self.xbox.getRawAxis(4))
-
-
-    # bumpers control wrist/popper
-    if self.xbox.getRawButton(5):
-      self.wrist.up()
-    elif self.xbox.getRawButton(6):
-      self.wrist.down()
-    else:
-      self.wrist.stop()
-
-    # Popper (
-    self.popper.set(self.xbox.getRawButton(5))
-
-    # Intake Code (Triggers)
-    self.intake.set(self.xbox.getRawAxis(2) + (-1.0 * self.xbox.getRawAxis(3)))
-
-
+  
   def autonomousInit(self):
     """
     Runs one time whenever the bot enters auto mode
@@ -64,6 +43,27 @@ class Wheatley(TimedRobot):
     """
 
     self.teleopPeriodic() # TODO: remove soon once auto code works
+  def teleopPeriodic(self):
+    """
+    teleop code
+    """
+    #speed = xbox.getRawAxis(4)
+
+    # triggers for speed, left stick for steer
+    speed= self.kDriveMax*((xbox.getRawAxis(3) - getRawAxis(2))**3) # cubic response
+    steer = self.getRawAxis(0)**3
+
+    self.drive.drive.arcadeDrive(speed,
+                                steer)
+
+
+    # Popper (Left Bumper)
+    self.popper.set(self.xbox.getRawButton(4))
+
+    # Intake Code (Right Stick)
+    self.intake.set(self.xbox.getRawAxis(5))
+
+
 
 if __name__ == '__main__':
   wpilib.run(Wheatley)
