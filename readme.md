@@ -4,21 +4,20 @@
 
 TODO
 ---
- - add autonomous(encoders)
- - add IMU + Encoder fusion algorithm
- - robotpy simulator
- - add camera tracker
- - interface cameratracker to jetson, communicate with roboRIO over NetworkTables
- - stream iris cam
- - update, configure CAN ids on PDP and PCM
-
  - **Robot Build**
-   - add pneumatic panel
-   - mount air tanks to drivetrain
-   - front panel for cylinders
-   - cable mgmt
-   - mount side panels
-   - drive practice!
+    - secure LEDs
+    - secure RSL
+    - laser cut sponsor, robot graphics
+    - mount side panels
+    - finish cable mgmt
+ - Draw out field
+ - reinstall driver station
+ - reflash RIO
+ - update WPILIB
+ - Driver Practice
+ - 1 auto path
+ - auto dashboard
+
 
 Notes
 ---
@@ -31,6 +30,7 @@ Notes
 DONE
 ---
  - add encoders
+ - add imu
  - add cameras
  - install robotpy
  - add drive base class
@@ -44,3 +44,6 @@ DONE
    - intake
    - bumpers
    - electrical panel
+   - pneumatics panel
+   - pneumatics popper
+   - pneumatics tank

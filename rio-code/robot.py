@@ -5,7 +5,7 @@ from components import drive, wrist, popper, encoders, imu#, statemachine
 
 class Wheatley(TimedRobot):
   kSpeedLimit = 0.8 # to prevent driver from tipping robot
-
+  kAutoLimit = 0.2 # for testing only, can increase later if things look good
   def robotInit(self):
     """
     Init Robot
