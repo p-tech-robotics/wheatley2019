@@ -11,8 +11,8 @@ class Wheatley(TimedRobot):
 
     # Robot Components
     # Constructor params are PWM Ports on the RIO
-    self.drive = drive.Drivetrain(0,1,2,3)
-    self.wrist = wrist.Wrist(4)
+    self.drive = drive.Drivetrain(1,2,3,4)
+    self.wrist = wrist.Wrist(0)
     self.intake = intake.Intake(5)
     self.popper = popper.Popper(0,0)
 
@@ -23,13 +23,10 @@ class Wheatley(TimedRobot):
 
     CameraServer.launch("components/camera.py:main")
 
-    self.ds = DriverStation.getInstance()
-    self.pdp = PowerDistributionPanel(1)
-
     self.timer = Timer()
-  def teleopInit(self):
-    pass
-  def teleopPeriodic(self):
+  
+
+  def robotPeriodic(self):
     self.drive.drive.arcadeDrive(self.xbox.getRawAxis(1),
                                 self.xbox.getRawAxis(4))
 
@@ -56,13 +53,14 @@ class Wheatley(TimedRobot):
     self.timer.reset()
     self.timer.start()
 
-
+  '''
   def autonomousPeriodic(self):
     """
     loops during auto period
     """
 
     self.teleopPeriodic() # TODO: remove soon once auto code works
+  '''
 
 if __name__ == '__main__':
   wpilib.run(Wheatley)
