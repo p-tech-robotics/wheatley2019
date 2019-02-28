@@ -4,7 +4,8 @@ from wpilib import TimedRobot, Timer, Joystick, CameraServer, PowerDistributionP
 from components import drive, wrist, intake, popper, encoders
 
 class Wheatley(TimedRobot):
-  kSpeedLim = 0.7
+  kSpeedLim = 0.8
+  kSteerLim = 0.75
   def robotInit(self):
     """
     Init Robot
@@ -30,14 +31,14 @@ class Wheatley(TimedRobot):
 
     # speed = self.xbox.getRawAxis(1)
     speed = self.kSpeedLim*((self.xbox.getRawAxis(3) - self.xbox.getRawAxis(2))**3) #speed limited triggers with cubic feedback
-    steer = self.xbox.getRawAxis(0) # left stick x axis
+    steer = self.kSteerLim*(self.xbox.getRawAxis(0)**3) # left stick x axis
     self.drive.drive.arcadeDrive(speed,
                                 steer)
 
 
     # Popper (
     
-    if self.xbox.getRawButton(5):
+    if self.xbox.getRawButton(5) == True:
       self.popper.extend()
     else:
       self.popper.retract()
