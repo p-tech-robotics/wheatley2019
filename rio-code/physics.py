@@ -20,7 +20,7 @@ class PhysicsEngine(object):
     bumper_width = 3.25 * units.inch
 
     # fmt: off
-    self.drivetrain = tankModel.TankModel.theory(
+    self.drivetrain = tankmodel.TankModel.theory(
             motor.cfgs.MOTOR_CFG_CIM,               # motor configuration
             110 * units.lbs,                        # robot mass
             10.75,                                  # gear ratio
