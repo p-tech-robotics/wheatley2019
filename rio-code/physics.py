@@ -27,7 +27,7 @@ class PhysicsEngine(object):
             2,                                      # motors per side
             24* units.inch,                         # dist between wheelbase
             (28+6.5) * units.inch,                         # robot width
-            (28+6.5) * units.inch.                         # robot length
+            (28+6.5) * units.inch,                         # robot length
             6 * units.inch
             )
 
