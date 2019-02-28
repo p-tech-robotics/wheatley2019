@@ -30,7 +30,7 @@ class Wheatley(TimedRobot):
   def robotPeriodic(self):
 
     # speed = self.xbox.getRawAxis(1)
-    speed = self.kSpeedLim*(((self.xbox.getRawAxis(3) - self.xbox.getRawAxis(2))**3) #speed limited triggers with cubic feedback
+    speed = self.kSpeedLim*((self.xbox.getRawAxis(3) - self.xbox.getRawAxis(2))**3) #speed limited triggers with cubic feedback
     steer = self.xbox.getRawAxis(4) # left stick x axis
     self.drive.drive.arcadeDrive(speed,
                                 steer)
