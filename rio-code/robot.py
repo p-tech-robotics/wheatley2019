@@ -4,7 +4,6 @@ from wpilib import TimedRobot, Timer, Joystick, CameraServer, PowerDistributionP
 from components import drive, wrist, popper, encoders, imu#, statemachine
 
 class Wheatley(TimedRobot):
-<<<<<<< HEAD
   kSpeedLim = 0.8
   kSteerLim = 0.75
   def robotInit(self):
