@@ -4,7 +4,7 @@ from wpilib import TimedRobot, Timer, Joystick, CameraServer, PowerDistributionP
 from components import drive, wrist, intake, popper, encoders
 
 class Wheatley(TimedRobot):
-  kSpeedLim = 0.8
+  kSpeedLim = 0.7
   def robotInit(self):
     """
     Init Robot
@@ -13,8 +13,7 @@ class Wheatley(TimedRobot):
     # Robot Components
     # Constructor params are PWM Ports on the RIO
     self.drive = drive.Drivetrain(1,2,3,4)
-    self.wrist = wrist.Wrist(0)
-    self.intake = intake.Intake(5)
+    self.intake = intake.Intake(0)
     self.popper = popper.Popper(0,0)
 
     self.encoders = encoders.Encoders()
@@ -36,17 +35,12 @@ class Wheatley(TimedRobot):
                                 steer)
 
 
-    # bumpers control wrist/popper
-    if self.xbox.getRawButton(5):
-      self.wrist.up()
-    elif self.xbox.getRawButton(6):
-      self.wrist.down()
-    else:
-      self.wrist.stop()
-
     # Popper (
-    self.popper.set(self.xbox.getRawButton(5))
-
+    
+    if self.xbox.getRawButton(5):
+      self.popper.extend()
+    else:
+      self.popper.retract()
     # Intake Code (Triggers)
     self.intake.set(self.xbox.getRawAxis(5))
 
