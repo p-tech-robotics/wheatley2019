@@ -1,7 +1,7 @@
 import wpilib
 from wpilib import TimedRobot, Timer, Joystick, CameraServer, PowerDistributionPanel, DriverStation
 
-from components import drive, wrist, popper, encoders, imu#, statemachine
+from components import drive, intake, wrist, popper, encoders, imu#, statemachine
 
 class Wheatley(TimedRobot):
   kSpeedLim = 0.8
