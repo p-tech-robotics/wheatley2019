@@ -3,7 +3,7 @@ from wpilib import Spark, SpeedControllerGroup
 from wpilib.drive import DifferentialDrive
 
 from wpilib.commad import Subsystem
-from commands import circle, drive_bot
+from commands import circle, drivebot
 
 class Drivetrain(Subsystem):
   """
