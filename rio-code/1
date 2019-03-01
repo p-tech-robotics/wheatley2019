@@ -9,9 +9,9 @@ from networktables import NetworkTables
 from wpilib.shuffleboard import Shuffleboard
 
 def circles(self):
-  self.drive.drive.arcadeDrive(0,0.7)
+  self.drive.drive.arcadeDrive(0,0.5)
 
-class Wheatley(CommandBasedRobot):
+class Wheatley(TimedRobot):
   kSpeedLim = 0.8
   kSteerLim = 0.75
 
@@ -40,22 +40,39 @@ class Wheatley(CommandBasedRobot):
     self.shuffleboard()
     #self.myBoolean.value = True
     self.timer = Timer()
+    self.statemachine = {
+          0: self.teleopRobot,
+          1: self.circles,
+          }
     
   
   def shuffleboard(self):
     self.chooser = wpilib.SendableChooser()
-    self.chooser.setDefaultOption('circles', 1)
-    self.chooser.addOption('teleop', 0)
+    self.chooser.setDefaultOption('teleop', 0)
+    self.chooser.addOption('circles', 1)
     wpilib.SmartDashboard.putData("choice", self.chooser)
 
     self.test_tab = (Shuffleboard.getTab("selector")
             .add(self.chooser, title="chooser")
             .withWidget("Split Button Chooser"))
+
+  def stateSelector(self):
+    """
+    selects robot state, overrides if "a" button is pressed on the
+    """
+    self.booltest = self.chooser.getSelected()
+    if self.booltest == 1:
+      self.state = 1
+    elif self.xbox.getRawButton(1) == 1 or self.chooser.getSelected() == 0:
+      self.chooser.selected = 'teleop'
+      self.state = 0 
     
   def robotPeriodic(self):
-    self.circles()
-    self.teleopRobot()
+    #self.circles()
+    #self.teleopRobot()
     
+    self.stateSelector()
+    self.statemachine[self.state]()
     wpilib.shuffleboard.Shuffleboard.update()
 
   def teleopRobot(self):
