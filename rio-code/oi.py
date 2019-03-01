@@ -38,7 +38,7 @@ class OI:
   def getSpeed(self):
     l_trigger = self.xbox.getRawAxis(2)
     r_trigger = self.xbox.getRawAxis(3)
-    return 0.7*((l_trigger - r_trigger)**3)
+    return 0.8*((l_trigger - r_trigger)**3)
 
   def getIntakeSpeed(self):
 
