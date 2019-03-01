@@ -1,12 +1,14 @@
 import wpilib
 from wpilib import Spark
+from wpilib.command import Subsystem
 
-class Intake:
+class Intake(Subsystem):
   """
-  Backup mech for hatch panels
+  cargo intake
   """
 
   def __init__(self, port):
+    super().__init__()
     self.motor = Spark(port)
 
   def set(self, speed):
