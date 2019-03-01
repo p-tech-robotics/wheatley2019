@@ -3,6 +3,8 @@ from wpilib import TimedRobot, Timer, Joystick, CameraServer, PowerDistributionP
 
 from components import drive, intake, wrist, popper, encoders, imu#, statemachine
 
+import math
+
 class Wheatley(TimedRobot):
   kSpeedLim = 0.8
   kSteerLim = 0.75
@@ -26,7 +28,11 @@ class Wheatley(TimedRobot):
     CameraServer.launch("components/camera.py:main")
 
     self.timer = Timer()
-  
+
+  def stateSelector(self):
+    """
+    selects robot state, overrides if "a" button is pressed on the
+    """
 
   def robotPeriodic(self):
 
@@ -53,7 +59,6 @@ class Wheatley(TimedRobot):
     """
     self.timer.reset()
     self.timer.start()
-
 
 if __name__ == '__main__':
   wpilib.run(Wheatley)
