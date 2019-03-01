@@ -9,7 +9,7 @@ class Wheatley(TimedRobot):
   kSpeedLim = 0.8
   kSteerLim = 0.75
 
-  state = 1
+  state = 2
 
   def robotInit(self):
     """
@@ -45,7 +45,8 @@ class Wheatley(TimedRobot):
     return NotImplemented
 
   def straight(self):
-      return NotImplemented
+    self.drive.drive.arcadeDrive(-0.8,0)
+
 
   def robotPeriodic(self):
     self.statemachine[self.state]

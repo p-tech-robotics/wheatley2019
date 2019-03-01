@@ -41,7 +41,7 @@ class PhysicsEngine(object):
 
     # simulate the drivetrain
     lr_motor = hal_data["pwm"][1]["value"]
-    rr_motor = hal_data["pwm"][2]["value"]
+    rr_motor = hal_data["pwm"][3]["value"]
 
     x, y, angle = self.drivetrain.get_distance(lr_motor, rr_motor, tm_diff)
     self.physics_controller.distance_drive(x, y, angle)
