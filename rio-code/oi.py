@@ -29,3 +29,9 @@ class OI:
     self.l_bumper.whenPressed(Pop(self.robot))
 
     self.a_button.whenPressed(Circles(self.robot))
+
+  def getSteer(self):
+    return self.steer
+
+  def getSpeed(self):
+    return self.speed

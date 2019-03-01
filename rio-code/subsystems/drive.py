@@ -38,7 +38,7 @@ class Drivetrain(Subsystem):
     self.drive = DifferentialDrive(self.l_group, self.r_group)
 
   def initDefaultCommand(self):
-    self.setDefaultCommand(drive_bot(self.robot))
+    self.setDefaultCommand(drivebot.DriveBot(self.robot))
 
   
 

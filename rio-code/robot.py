@@ -5,6 +5,8 @@ from subsystems import drive, intake, popper, encoders, imu#, statemachine
 
 import math
 
+from oi import OI
+
 class Wheatley(CommandBasedRobot):
 
   def robotInit(self):
@@ -14,8 +16,8 @@ class Wheatley(CommandBasedRobot):
 
     # Robot Components
     # Constructor params are PWM Ports on the RIO
-    self.drivetrain = drive.Drivetrain(1,2,3,4)
-    
+    self.drivetrain = drive.Drivetrain(self, 1,2,3,4)
+    self.oi = OI(self) 
     self.intake = intake.Intake(0)
     self.popper = popper.Popper(0,0)
 
@@ -26,7 +28,7 @@ class Wheatley(CommandBasedRobot):
 
     CameraServer.launch("components/camera.py:main")
     
-    self.drivecommand = DriveCommandGroup()
+    #self.drivecommand = DriveCommandGroup()
     
     self.timer = Timer()
     
@@ -35,7 +37,7 @@ class Wheatley(CommandBasedRobot):
     """
     Runs one time whenever the bot enters auto mode
     """
-    self.drivecommand.start()
+    #self.drivecommand.start()
 
 if __name__ == '__main__':
   wpilib.run(Wheatley)
