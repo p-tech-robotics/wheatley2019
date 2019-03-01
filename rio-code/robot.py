@@ -74,13 +74,15 @@ class Wheatley(TimedRobot):
     """
     selects robot state, overrides if "a" button is pressed on the
     """
-    if self.xbox.getRawButton == True:
+    if self.xbox.getRawButton(0) == True:
         self.state = 0 
-    return NotImplemented
+    else if self.booleanTest.value == True:
+        self.state = 1
 
   def robotPeriodic(self):
     #self.teleopRobot()
-    self.booleanTest.setBoolean(True)
+    self.stateSelector()
+    self.booleanTest.setBoolean(False)
     self.statemachine[self.state]
 
   def circles(self):
