@@ -31,19 +31,21 @@ class Wheatley(TimedRobot):
     self.xbox = Joystick(0)
 
     CameraServer.launch("components/camera.py:main")
-
+    
+    self.shuffleboard()
     self.timer = Timer()
-    self.myBoolean = (wpilib.shuffleboard.Shuffleboard.getTab("test tab")
-                      .add(title="test_boolean", value=False)
-                      .withWidget("Toggle Button")
-                      .getEntry()
-                      )
     self.statemachine = {
           0: self.teleopRobot(),
           1: self.circles(),
           2: self.straight()
           }
+  def shuffleboard(self):
 
+    self.myBoolean = (wpilib.shuffleboard.Shuffleboard.getTab("test tab")
+                      .add(title="test_boolean", value=False)
+                      .withWidget("Toggle Button")
+                      .getEntry()
+                      )
   def stateSelector(self):
     """
     selects robot state, overrides if "a" button is pressed on the
@@ -53,6 +55,7 @@ class Wheatley(TimedRobot):
     return NotImplemented
 
   def robotPeriodic(self):
+    print(self.myBoolean.value)
     self.teleopRobot()
     #self.statemachine[self.state]
 
