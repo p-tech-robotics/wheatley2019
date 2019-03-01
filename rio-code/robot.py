@@ -32,7 +32,7 @@ class Wheatley(TimedRobot):
 
     self.timer = Timer()
     
-    self.stateMachine = {
+    self.statemachine = {
           0: self.teleopRobot(),
           1: self.circles(),
           2: self.straight()
