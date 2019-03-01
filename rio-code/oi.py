@@ -22,17 +22,20 @@ class OI:
     self.r_bumper = JoystickButton(self.xbox, 5)
 
     self.a_button = JoystickButton(self.xbox, 1)
-    
+    self.b_button = JoystickButton(self.xbox, 2)
     self.steer = self.xbox.getRawAxis(0)
     self.speed = self.l_trigger - self.r_trigger
 
     
-    self.l_bumper.whenPressed(Pop(self.robot))
+    self.l_bumper.whileHeld(Pop(self.robot))
 
-    self.a_button.whenPressed(Circles(self.robot))
-
+    self.a_button.toggleWhenPressed(DriveBot(self.robot))
+    self.b_button.toggleWhenPressed(Circles(self.robot))
+    
   def getSteer(self):
-    return self.steer
+    return self.xbox.getRawAxis(0)
 
   def getSpeed(self):
-    return self.speed
+    l_trigger = self.xbox.getRawAxis(2)
+    r_trigger = self.xbox.getRawAxis(3)
+    return l_trigger - r_trigger

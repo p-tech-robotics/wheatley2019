@@ -10,14 +10,14 @@ class DriveBot(Command):
 
     self.robot = robot
     self.requires(self.robot.drivetrain)
-
+    
   def initialize(self):
     """ Called before command runs the first time"""
+    pass
 
   def execute(self):
     """Calls repeatedly when cmd is scheduled to run"""
-    self.robot.drivetrain.drive.arcadeDrive(self.robot.oi.getSteer(), self.robot.oi.getSpeed())
-
+    self.robot.drivetrain.drive.arcadeDrive(self.robot.oi.getSpeed(), self.robot.oi.getSteer())
 
   def isFinished(self):
     """make this return true when command no longer needs to run execute() """

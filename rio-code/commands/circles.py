@@ -10,19 +10,22 @@ class Circles(Command):
 
     self.robot = robot
     self.requires(self.robot.drivetrain)
-    self.setTimeout(10)
+    self.setTimeout(5)
 
   def initialize(self):
     """ Called before command runs the first time"""
 
   def execute(self):
     """Calls repeatedly when cmd is scheduled to run"""
-    self.robot.drivetrain.drive.arcadeDrive(0, 0.5)
+    self.robot.drivetrain.drive.arcadeDrive(0, 0.7)
 
 
   def isFinished(self):
     """make this return true when command no longer needs to run execute() """
-    return self.isTimedOut() # runs until interrupted
+    if self.robot.oi.getSpeed() != 0 and self.robot.oi.getSteer() != 0:
+        return True
+    else:
+        return self.isTimedOut() # runs until interrupted
 
   def end(self):
     """called once isFinished returns true"""
