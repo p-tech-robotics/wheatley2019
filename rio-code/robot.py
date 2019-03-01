@@ -80,7 +80,7 @@ class Wheatley(TimedRobot):
 
   def robotPeriodic(self):
     #self.teleopRobot()
-    self.booleanTest.setBool(True)
+    self.booleanTest.setBoolean(True)
     self.statemachine[self.state]
 
   def circles(self):
