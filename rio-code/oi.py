@@ -21,10 +21,11 @@ class OI:
     self.l_bumper = JoystickButton(self.xbox, 6)
     self.r_bumper = JoystickButton(self.xbox, 5)
 
+    self.a_button = JoystickButton(self.xbox, 1)
+    
     self.steer = self.xbox.getRawAxis(0)
     self.speed = self.l_trigger - self.r_trigger
 
-    self.a_button = self.xbox.getRawButton(1)
     
     self.l_bumper.whenPressed(Pop(self.robot))
 

@@ -2,7 +2,7 @@ from wpilib.command import Command
 
 class Pop(Command):
   def __init__(self,robot):
-    super().init()
+    super().__init__()
 
     self.robot = robot
 
