@@ -4,15 +4,16 @@ from wpilib import TimedRobot, Timer, Joystick, CameraServer, PowerDistributionP
 from components import drive, intake, wrist, popper, encoders, imu#, statemachine
 
 import math
-def straight(self):
-  self.drive.drive.arcadeDrive(-0.5, 0)
+def circles(self):
+  self.drive.drive.arcadeDrive(0, -0.3)
 
 class Wheatley(TimedRobot):
   kSpeedLim = 0.8
   kSteerLim = 0.75
 
-  state = 0
-  straight = straight
+  state = 1
+  circles = circles
+
   def robotInit(self):
     """
     Init Robot
@@ -38,17 +39,34 @@ class Wheatley(TimedRobot):
     self.statemachine = {
           0: self.teleopRobot(),
           1: self.circles(),
-          2: self.straight()
           }
+    
+    self.turnBool = False
+  
   def shuffleboard(self):
+    '''
+    NetworkTables.initialize(server='roborio-6543-frc.local')
+    
+    self,sd = NetworkTables.getTable('SmartDashboard')
+    sd.putBool = ("Teleop", False)
+    sd.putBool = ("Teleop", False)
+    self.tab = Shuffleboard.getTab("Wheatley 2019")
+    '''
 
-    self.myBoolean = (wpilib.shuffleboard.Shuffleboard.getTab("test tab")
-                      .add(title="test_boolean", value=False)
-                      .withWidget("Toggle Button")
-                      .getEntry()
-                      )
-    self.myCamera  = (wpilib.shuffleboard.Shuffleboard.getTab("test tab")
-            .add(title="camera", value=0)
+    self.booleanTest = (wpilib.shuffleboard.Shuffleboard.getTab("test tab")
+            .add(title="testbool", value=False)
+            .withWidget("Toggle Button")
+            .getEntry()
+            )
+    
+    self.camera1  = (wpilib.shuffleboard.Shuffleboard.getTab("test tab")
+            .add(title="camera 1", value=0)
+            .withWidget(wpilib.shuffleboard.BuiltInWidgets.kCameraStream)
+            .getEntry()
+            )
+    
+    self.camera2  = (wpilib.shuffleboard.Shuffleboard.getTab("test tab")
+            .add(title="camera 2", value=1)
             .withWidget(wpilib.shuffleboard.BuiltInWidgets.kCameraStream)
             .getEntry()
             )
@@ -61,9 +79,9 @@ class Wheatley(TimedRobot):
     return NotImplemented
 
   def robotPeriodic(self):
-    #print(self.myBoolean.value)
-    self.teleopRobot()
-    #self.statemachine[self.state]
+    #self.teleopRobot()
+    self.booleanTest.setBool(True)
+    self.statemachine[self.state]
 
   def circles(self):
       self.drive.drive.arcadeDrive(0, 0.5)
