@@ -1,7 +1,7 @@
 import wpilib
 from wpilib import Timer, Joystick, CameraServer, PowerDistributionPanel, DriverStation
 from commandbased import CommandBasedRobot
-from subsystems import drive, intake, wrist, popper, encoders, imu#, statemachine
+from subsystems import drive, intake, popper, encoders, imu#, statemachine
 
 import math
 

@@ -1,6 +1,6 @@
 import wpilib
 from wpilib import Solenoid, DoubleSolenoid
-from wpilib.command import subsystem
+from wpilib.command import Subsystem
 
 class Popper(Subsystem):
   def __init__(self, can_id=0, channel=0):
