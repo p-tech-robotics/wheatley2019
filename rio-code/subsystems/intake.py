@@ -2,14 +2,17 @@ import wpilib
 from wpilib import Spark
 from wpilib.command import Subsystem
 
+from commands.operateintake import OperateIntake
+
 class Intake(Subsystem):
   """
   cargo intake
   """
 
-  def __init__(self, port):
+  def __init__(self, port, robot):
     super().__init__()
     self.motor = Spark(port)
+    self.robot = robot
 
   def set(self, speed):
     """
@@ -25,5 +28,7 @@ class Intake(Subsystem):
 
   def stop(self):
     self.set(0)
-
+  
+  def initDefaultCommand(self):
+    self.setDefaultCommand(OperateIntake(self.robot))
 

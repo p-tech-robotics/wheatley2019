@@ -17,15 +17,15 @@ class Wheatley(CommandBasedRobot):
     # Robot Components
     # Constructor params are PWM Ports on the RIO
     self.drivetrain = drive.Drivetrain(self, 1,2,3,4)
-    self.intake = intake.Intake(0)
+    self.intake = intake.Intake(0, self)
     self.popper = popper.Popper(0,0)
 
     self.imu = imu.IMU(2)
     self.encoders = encoders.Encoders()
 
+    CameraServer.launch("subsystems/camera.py:main")
     self.oi = OI(self) 
 
-    CameraServer.launch("components/camera.py:main")
     
     #self.drivecommand = DriveCommandGroup()
     

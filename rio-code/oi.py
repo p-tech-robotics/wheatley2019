@@ -33,9 +33,13 @@ class OI:
     self.b_button.toggleWhenPressed(Circles(self.robot))
     
   def getSteer(self):
-    return self.xbox.getRawAxis(0)
+    return 0.8*(self.xbox.getRawAxis(0)**3)
 
   def getSpeed(self):
     l_trigger = self.xbox.getRawAxis(2)
     r_trigger = self.xbox.getRawAxis(3)
-    return l_trigger - r_trigger
+    return 0.7*((l_trigger - r_trigger)**3)
+
+  def getIntakeSpeed(self):
+
+    return self.xbox.getRawAxis(5)
