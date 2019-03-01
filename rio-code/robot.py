@@ -8,6 +8,9 @@ import math
 class Wheatley(TimedRobot):
   kSpeedLim = 0.8
   kSteerLim = 0.75
+
+  state = 1
+
   def robotInit(self):
     """
     Init Robot
@@ -28,14 +31,29 @@ class Wheatley(TimedRobot):
     CameraServer.launch("components/camera.py:main")
 
     self.timer = Timer()
+    
+    self.stateMachine = {
+          0: self.teleopRobot(),
+          1: self.circles(),
+          2: self.straight()
+          }
 
   def stateSelector(self):
     """
     selects robot state, overrides if "a" button is pressed on the
     """
+    return NotImplemented
+
+  def straight(self):
+      return NotImplemented
 
   def robotPeriodic(self):
+    self.statemachine[self.state]
 
+  def circles(self):
+      self.drive.drive.arcadeDrive(0, 0.5)
+
+  def teleopRobot(self):
     # speed = self.xbox.getRawAxis(1)
     speed = self.kSpeedLim*((self.xbox.getRawAxis(3) - self.xbox.getRawAxis(2))**3) #speed limited triggers with cubic feedback
     steer = self.kSteerLim*(self.xbox.getRawAxis(0)**3) # left stick x axis
