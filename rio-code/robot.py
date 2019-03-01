@@ -1,22 +1,11 @@
 import wpilib
-from wpilib import TimedRobot, Timer, Joystick, CameraServer, PowerDistributionPanel, DriverStation
-
-from components import drive, intake, wrist, popper, encoders, imu#, statemachine
+from wpilib import Timer, Joystick, CameraServer, PowerDistributionPanel, DriverStation
+from commandbased import CommandBasedRobot
+from subsystems import drive, intake, wrist, popper, encoders, imu#, statemachine
 
 import math
 
-from networktables import NetworkTables
-from wpilib.shuffleboard import Shuffleboard
-
-def circles(self):
-  self.drive.drive.arcadeDrive(0,0.7)
-
 class Wheatley(CommandBasedRobot):
-  kSpeedLim = 0.8
-  kSteerLim = 0.75
-
-  state = 0
-  circles = circles
 
   def robotInit(self):
     """
@@ -25,7 +14,7 @@ class Wheatley(CommandBasedRobot):
 
     # Robot Components
     # Constructor params are PWM Ports on the RIO
-    self.drive = drive.Drivetrain(1,2,3,4)
+    self.drivetrain = drive.Drivetrain(1,2,3,4)
     
     self.intake = intake.Intake(0)
     self.popper = popper.Popper(0,0)
@@ -37,51 +26,16 @@ class Wheatley(CommandBasedRobot):
 
     CameraServer.launch("components/camera.py:main")
     
-    self.shuffleboard()
-    #self.myBoolean.value = True
+    self.drivecommand = DriveCommandGroup()
+    
     self.timer = Timer()
     
   
-  def shuffleboard(self):
-    self.chooser = wpilib.SendableChooser()
-    self.chooser.setDefaultOption('circles', 1)
-    self.chooser.addOption('teleop', 0)
-    wpilib.SmartDashboard.putData("choice", self.chooser)
-
-    self.test_tab = (Shuffleboard.getTab("selector")
-            .add(self.chooser, title="chooser")
-            .withWidget("Split Button Chooser"))
-    
-  def robotPeriodic(self):
-    self.circles()
-    self.teleopRobot()
-    
-    wpilib.shuffleboard.Shuffleboard.update()
-
-  def teleopRobot(self):
-    # speed = self.xbox.getRawAxis(1)
-    speed = self.kSpeedLim*((self.xbox.getRawAxis(3) - self.xbox.getRawAxis(2))**3) #speed limited triggers with cubic feedback
-    steer = self.kSteerLim*(self.xbox.getRawAxis(0)**3) # left stick x axis
-    self.drive.drive.arcadeDrive(speed,
-                                steer)
-
-
-    # Popper (
-    
-    if self.xbox.getRawButton(5) == True:
-      self.popper.extend()
-    else:
-      self.popper.retract()
-    # Intake Code (Triggers)
-    self.intake.set(self.xbox.getRawAxis(5))
-
-
   def autonomousInit(self):
     """
     Runs one time whenever the bot enters auto mode
     """
-    self.timer.reset()
-    self.timer.start()
+    self.drivecommand.start()
 
 if __name__ == '__main__':
   wpilib.run(Wheatley)
