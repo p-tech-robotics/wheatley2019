@@ -4,13 +4,15 @@ from wpilib import TimedRobot, Timer, Joystick, CameraServer, PowerDistributionP
 from components import drive, intake, wrist, popper, encoders, imu#, statemachine
 
 import math
+def straight(self):
+  self.drive.drive.arcadeDrive(-0.5, 0)
 
 class Wheatley(TimedRobot):
   kSpeedLim = 0.8
   kSteerLim = 0.75
 
-  state = 2
-
+  state = 0
+  straight = straight
   def robotInit(self):
     """
     Init Robot
@@ -31,7 +33,11 @@ class Wheatley(TimedRobot):
     CameraServer.launch("components/camera.py:main")
 
     self.timer = Timer()
-    
+    self.myBoolean = (wpilib.shuffleboard.Shuffleboard.getTab("test tab")
+                      .add(title="test_boolean", value=False)
+                      .withWidget("Toggle Button")
+                      .getEntry()
+                      )
     self.statemachine = {
           0: self.teleopRobot(),
           1: self.circles(),
@@ -42,14 +48,13 @@ class Wheatley(TimedRobot):
     """
     selects robot state, overrides if "a" button is pressed on the
     """
+    if self.xbox.getRawButton == True:
+        self.state = 0 
     return NotImplemented
 
-  def straight(self):
-    self.drive.drive.arcadeDrive(-0.8,0)
-
-
   def robotPeriodic(self):
-    self.statemachine[self.state]
+    self.teleopRobot()
+    #self.statemachine[self.state]
 
   def circles(self):
       self.drive.drive.arcadeDrive(0, 0.5)
