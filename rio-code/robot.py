@@ -1,13 +1,14 @@
 import wpilib
-from wpilib import TimedRobot, Timer, Joystick, CameraServer, PowerDistributionPanel, DriverStation
-
-from components import drive, intake, wrist, popper, encoders, imu#, statemachine
+from wpilib import Timer, Joystick, CameraServer, PowerDistributionPanel, DriverStation
+from commandbased import CommandBasedRobot
+from subsystems import drive, intake, popper, encoders, imu#, statemachine
 
 import math
 
-class Wheatley(TimedRobot):
-  kSpeedLim = 0.8
-  kSteerLim = 0.75
+from oi import OI
+
+class Wheatley(CommandBasedRobot):
+
   def robotInit(self):
     """
     Init Robot
@@ -15,50 +16,27 @@ class Wheatley(TimedRobot):
 
     # Robot Components
     # Constructor params are PWM Ports on the RIO
-    self.drive = drive.Drivetrain(1,2,3,4)
-    
-    self.intake = intake.Intake(0)
+    self.drivetrain = drive.Drivetrain(self, 1,2,3,4)
+    self.intake = intake.Intake(0, self)
     self.popper = popper.Popper(0,0)
 
     self.imu = imu.IMU(2)
     self.encoders = encoders.Encoders()
 
-    self.xbox = Joystick(0)
+    CameraServer.launch("subsystems/camera.py:main")
+    self.oi = OI(self) 
 
-    CameraServer.launch("components/camera.py:main")
-
-    self.timer = Timer()
-
-  def stateSelector(self):
-    """
-    selects robot state, overrides if "a" button is pressed on the
-    """
-
-  def robotPeriodic(self):
-
-    # speed = self.xbox.getRawAxis(1)
-    speed = self.kSpeedLim*((self.xbox.getRawAxis(3) - self.xbox.getRawAxis(2))**3) #speed limited triggers with cubic feedback
-    steer = self.kSteerLim*(self.xbox.getRawAxis(0)**3) # left stick x axis
-    self.drive.drive.arcadeDrive(speed,
-                                steer)
-
-
-    # Popper (
     
-    if self.xbox.getRawButton(5) == True:
-      self.popper.extend()
-    else:
-      self.popper.retract()
-    # Intake Code (Triggers)
-    self.intake.set(self.xbox.getRawAxis(5))
-
-
+    #self.drivecommand = DriveCommandGroup()
+    
+    self.timer = Timer()
+    
+  
   def autonomousInit(self):
     """
     Runs one time whenever the bot enters auto mode
     """
-    self.timer.reset()
-    self.timer.start()
+    #self.drivecommand.start()
 
 if __name__ == '__main__':
   wpilib.run(Wheatley)
