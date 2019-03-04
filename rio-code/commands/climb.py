@@ -1,18 +1,18 @@
 from wpilib.command import Command
 
-class Pop(Command):
+class LiftFront(Command):
   def __init__(self,robot):
     super().__init__()
 
     self.robot = robot
 
-    self.requires(self.robot.popper)
+    self.requires(self.robot.front_climber)
     self.setTimeout(1)
 
   def initialize(self):
     """ called once when the command runs """
 
-    self.robot.popper.set(True)
+    self.robot.front_climber.extend()
 
   def execute(self):
     """ runs repeatedly as long as cmd is cheduled to run"""
@@ -24,7 +24,7 @@ class Pop(Command):
 
   def end(self):
     """ called after isFinished returns true """
-    self.robot.popper.set(False)
+    self.robot.front_climber.retract()
 
   def interrupted(self):
     """ called when another command interrups this one """
