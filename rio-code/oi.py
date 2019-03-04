@@ -8,7 +8,7 @@ from commands.drivebot import DriveBot
 from commands.pop import Pop
 from commands.operateintake import OperateIntake
 from commands.lift import LiftFront, LiftRear
-from commands.circles import Circles
+# from commands.circles import Circles
 
 class OI:
   def __init__(self, robot):
