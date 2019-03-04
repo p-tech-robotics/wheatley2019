@@ -2,7 +2,7 @@ import wpilib
 from wpilib import Solenoid, DoubleSolenoid
 from wpilib.command import Subsystem
 
-class Climber(Subsystem):
+class Lift(Subsystem):
   def __init__(self, can_id=0, channel_1=1, channel_2=2):
     super().__init__()
 

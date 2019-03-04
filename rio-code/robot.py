@@ -1,7 +1,7 @@
 import wpilib
 from wpilib import Timer, Joystick, CameraServer, PowerDistributionPanel, DriverStation
 from commandbased import CommandBasedRobot
-from subsystems import drive, intake, popper, encoders, imu#, statemachine
+from subsystems import drive, intake, popper, encoders, imu, lift#, statemachine
 
 import math
 
@@ -19,7 +19,9 @@ class Wheatley(CommandBasedRobot):
     self.drivetrain = drive.Drivetrain(self, 1,2,3,4)
     self.intake = intake.Intake(0, self)
     self.popper = popper.Popper(0,0)
-
+    
+    self.front_climber = 
+    
     self.imu = imu.IMU(2)
     self.encoders = encoders.Encoders()
 
