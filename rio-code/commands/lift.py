@@ -6,13 +6,13 @@ class LiftFront(Command):
 
     self.robot = robot
 
-    self.requires(self.robot.front_climber)
+    self.requires(self.robot.front_lift)
     self.setTimeout(1)
 
   def initialize(self):
     """ called once when the command runs """
 
-    self.robot.front_climber.extend()
+    self.robot.front_lift.extend()
 
   def execute(self):
     """ runs repeatedly as long as cmd is cheduled to run"""
@@ -24,7 +24,7 @@ class LiftFront(Command):
 
   def end(self):
     """ called after isFinished returns true """
-    self.robot.front_climber.retract()
+    self.robot.front_lift.retract()
 
   def interrupted(self):
     """ called when another command interrups this one """
@@ -36,13 +36,13 @@ class LiftRear(Command):
 
     self.robot = robot
 
-    self.requires(self.robot.rear_climber)
+    self.requires(self.robot.rear_lift)
     self.setTimeout(1)
 
   def initialize(self):
     """ called once when the command runs """
 
-    self.robot.rear_climber.extend()
+    self.robot.rear_lift.extend()
 
   def execute(self):
     """ runs repeatedly as long as cmd is cheduled to run"""
@@ -54,7 +54,7 @@ class LiftRear(Command):
 
   def end(self):
     """ called after isFinished returns true """
-    self.robot.rear_climber.retract()
+    self.robot.rear_lift.retract()
 
   def interrupted(self):
     """ called when another command interrups this one """
