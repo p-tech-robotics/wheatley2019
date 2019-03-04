@@ -9,19 +9,15 @@ repos
 
 TODO
 ---
- - **Robot Build**
-    - secure LEDs
-    - secure RSL
-    - laser cut sponsor, robot graphics
-    - mount side panels
-    - finish cable mgmt
- - Draw out field
- - reinstall driver station
- - reflash RIO
- - update WPILIB
- - Driver Practice
- - 1 auto path
+ - auto code
  - auto dashboard
+ - **Robot Build**
+   - order new parts
+   - build L2 climber mech
+   - mount L2 Climber Mech
+   - replace gussets and broken cross bars
+   - replace & drill lift bar
+   - add new webcam & LED Ring
 
 
 Notes
@@ -42,13 +38,23 @@ DONE
  - add subsystem components
  - write LED code
  - set up electronics
- - finish building robot
-   - drivetrain
-   - frame
-   - wrist
-   - intake
-   - bumpers
-   - electrical panel
-   - pneumatics panel
-   - pneumatics popper
-   - pneumatics tank
+ - **Robot Build**
+    - secure LEDs
+    - secure RSL
+    - laser cut sponsor, robot graphics
+    - mount side panels
+    - finish cable mgmt
+    - Draw out field
+    - reinstall driver station
+    - reflash RIO
+    - update WPILIB
+    - Driver Practice
+    - drivetrain
+    - frame
+    - wrist
+    - intake
+    - bumpers
+    - electrical panel
+    - pneumatics panel
+    - pneumatics popper
+    - pneumatics tank
