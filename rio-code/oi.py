@@ -7,6 +7,7 @@ from wpilib.shuffleboard import Shuffleboard as SB
 from commands.drivebot import DriveBot
 from commands.pop import Pop
 from commands.operateintake import OperateIntake
+from commands.lift import LiftFront, LiftRear
 from commands.circles import Circles
 
 class OI:
@@ -29,8 +30,10 @@ class OI:
     
     self.l_bumper.whileHeld(Pop(self.robot))
 
-    self.a_button.toggleWhenPressed(DriveBot(self.robot))
-    self.b_button.toggleWhenPressed(Circles(self.robot))
+    self.a_button.whileHeld(LiftFront(self.robot))
+    self.b_button.whileHeld(LiftRear(self.robot))
+    #self.a_button.toggleWhenPressed(DriveBot(self.robot))
+    #self.b_button.toggleWhenPressed(Circles(self.robot))
     
   def getSteer(self):
     return 0.8*(self.xbox.getRawAxis(0)**3)
