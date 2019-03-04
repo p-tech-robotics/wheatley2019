@@ -1,6 +1,11 @@
 # wheatley2019
 2019 FRC robot code for Wheatley
-![pipeline](resources/pipeline.jpeg)
+
+repos
+---
+ - [rio code/wheatley2019](https://github.com/pumatech-robotics/wheatley2019)
+ - [pumavision 2019](https://github.com/pumatech-robotics/pumavision2019)
+
 
 TODO
 ---
