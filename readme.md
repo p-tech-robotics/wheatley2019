@@ -10,11 +10,12 @@ repos
 TODO
 ---
  - auto code
- - auto dashboard
+ - test out L2 starting position
  - **Robot Build**
    - order new parts
    - build L2 climber mech
    - mount L2 Climber Mech
+   - build & mount hatch panel mech
    - replace gussets and broken cross bars
    - replace & drill lift bar
    - add new webcam & LED Ring
