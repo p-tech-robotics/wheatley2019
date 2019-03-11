@@ -3,7 +3,7 @@
 
 repos
 ---
- - [rio code/wheatley2019](https://github.com/pumatech-robotics/wheatley2019)
+ - [rio code/wheatley2019](https://github.com/kemfic/wheatley2019)
  - [pumavision 2019](https://github.com/pumatech-robotics/pumavision2019)
 
 
