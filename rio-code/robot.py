@@ -21,7 +21,7 @@ class Wheatley(CommandBasedRobot):
     self.popper = popper.Popper(0,0)
     
     self.front_lift = lift.Lift(0,1,2)
-    self.rear_lift = lift.Lift(0,3,4)
+    self.rear_lift = lift.Lift(0,5,4)
     
     self.imu = imu.IMU(2)
     self.encoders = encoders.Encoders()

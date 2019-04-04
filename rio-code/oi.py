@@ -28,10 +28,10 @@ class OI:
     self.speed = self.l_trigger - self.r_trigger
 
     
-    self.l_bumper.whileHeld(Pop(self.robot))
+    self.a_button.whileHeld(Pop(self.robot))
 
-    self.a_button.whileHeld(LiftFront(self.robot))
-    self.b_button.whileHeld(LiftRear(self.robot))
+    self.r_bumper.whileHeld(LiftFront(self.robot))
+    self.l_bumper.whileHeld(LiftRear(self.robot))
     #self.a_button.toggleWhenPressed(DriveBot(self.robot))
     #self.b_button.toggleWhenPressed(Circles(self.robot))
     
